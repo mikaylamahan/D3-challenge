@@ -1,13 +1,13 @@
 // @TODO: YOUR CODE HERE!
-var svgWidth = 960;
-var svgHeight = 660;
+var svgWidth = 400;
+var svgHeight = 400;
 
 // Define the chart's margins as an object
 var chartMargin = {
-  top: 30,
-  right: 30,
-  bottom: 30,
-  left: 30
+  top: 20,
+  right: 40,
+  bottom: 80,
+  left: 100
 };
 
 // Define dimensions of the chart area
@@ -65,7 +65,7 @@ d3.csv("/assets/data/data.csv").then(function(totaldata) {
     
     //create blue, opaque circles for the points on the graph
     chartGroup.selectAll("circle")
-        .data(data)
+        .data(totaldata)
         .enter()
         .append("circle")
         .attr("cx", d => xLinearScale(d.poverty))
@@ -76,7 +76,7 @@ d3.csv("/assets/data/data.csv").then(function(totaldata) {
 
     //include state abbrvs inside the small circles, per instructions
     chartGroup.selectAll("text.text-circles")
-    .data(data)
+    .data(totaldata)
     .enter()
     .append("text")
     .classed("text-circles",true)
@@ -91,15 +91,15 @@ d3.csv("/assets/data/data.csv").then(function(totaldata) {
     //create/append y axis
     chartGroup.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 30 - margin.left)
-        .attr("x", 0 - (height / 2))
+        .attr("y", 30 - chartMargin.left)
+        .attr("x", 0 - (chartHeight / 2))
         .attr("dy", "1em")
         .classed("aText", true)
         .text("Lacks Healthcare (%)");
     //create/append x axis
     chartGroup.append("text")
-        .attr("y", height + margin.bottom/2 - 10)
-        .attr("x", width / 2)
+        .attr("y", chartHeight + chartMargin.bottom/2 - 10)
+        .attr("x", chartWidth / 2)
         .attr("dy", "1em")
         .classed("aText", true)
         .text("Poverty Rate (%)");
