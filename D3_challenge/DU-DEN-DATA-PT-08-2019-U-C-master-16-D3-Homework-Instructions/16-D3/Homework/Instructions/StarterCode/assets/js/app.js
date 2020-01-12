@@ -6,7 +6,7 @@ var svgHeight = 400;
 var chartMargin = {
   top: 20,
   right: 40,
-  bottom: 80,
+  bottom: 100,
   left: 100
 };
 
